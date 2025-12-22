@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.sec.eeg.ars.data.agentendpointkeeper";
+option java_outer_classname = "agentendpoint";
+
+package agentendpointkeeper;
+
+service Agentendpointkeeper {
+    rpc UpdateScenario(JasonStringRequest) returns (ResponseResult) {}
+    rpc UpdateScript(JasonStringRequest) returns (ResponseResult) {}
+    rpc RunScenario(JasonStringRequest) returns (ResponseResult) {}
+    rpc RunScript(JasonStringRequest) returns (ResponseResult) {}
+    rpc RunRTMScript(JasonStringRequest) returns (ResponseResult) {}
+    rpc RunRTMPopup(JasonStringRequest) returns (ResponseResult) {}
+    rpc RunRTMEvent(JasonStringRequest) returns (ResponseResult) {}
+    rpc HealthCheck(NoParams) returns (ResponseResult) {}
+}
+
+message NoParams {}
+
+message JasonStringRequest {
+    string json = 1;
+}
+
+message ResponseResult {
+    bool success = 1;
+    string message = 2;
+}

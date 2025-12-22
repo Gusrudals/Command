@@ -436,7 +436,7 @@ class JobActor(conf: Config) extends Actor {
             }
           }
         }
-        context.actorSelection("/user/Master/MessageProducer") ! SendMessageToStatusTopic(scr.process, scr.model, scr.hostname, scr.scname, scr.txn, scResult, scr.params)
+        context.actorSelection("/user/Master/MessageProducer") ! SendMessageToResultTopic(scr.process, scr.model, scr.hostname, scr.scname, scr.txn, scResult, scr.params)
       } catch {
         case ex: Throwable => log.warn(s"Scenario Result failed: ${ex.getMessage}")
       }
